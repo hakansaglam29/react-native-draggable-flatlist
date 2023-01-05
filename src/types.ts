@@ -1,12 +1,11 @@
 import React from "react";
 import {
-  FlatListProps,
   LayoutChangeEvent,
   StyleProp,
   ViewStyle,
 } from "react-native";
 import { useAnimatedValues } from "./context/animatedValueContext";
-import { FlashList } from "@shopify/flash-list";
+import { FlashList, FlashListProps } from "@shopify/flash-list";
 import Animated, {
   AnimateProps,
   WithSpringConfig,
@@ -22,8 +21,8 @@ type Modify<T, R> = Omit<T, keyof R> & R;
 
 type DefaultProps = Readonly<typeof DEFAULT_PROPS>;
 
-export type DraggableFlatListProps<T> = Modify<
-  FlatListProps<T>,
+export type DraggableFlashListProps<T> = Modify<
+  FlashListProps<T>,
   {
     data: T[];
     activationDistance?: number;
@@ -71,7 +70,7 @@ export type RenderItem<T> = (params: RenderItemParams<T>) => React.ReactNode;
 
 export type AnimatedFlatListType = <T>(
   props: Animated.AnimateProps<
-    FlatListProps<T> & {
+    FlashListProps<T> & {
       ref: React.Ref<FlashList<T>>;
       simultaneousHandlers?: React.Ref<any> | React.Ref<any>[];
     }

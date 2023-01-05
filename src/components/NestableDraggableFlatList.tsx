@@ -4,7 +4,7 @@ import Animated, {
   useDerivedValue,
   useSharedValue,
 } from "react-native-reanimated";
-import { DraggableFlatListProps } from "../types";
+import { DraggableFlashListProps } from "../types";
 import DraggableFlatList from "../components/DraggableFlatList";
 import { useSafeNestableScrollContainerContext } from "../context/nestableScrollContainerContext";
 import { useNestedAutoScroll } from "../hooks/useNestedAutoScroll";
@@ -13,7 +13,7 @@ import { useStableCallback } from "../hooks/useStableCallback";
 import { FlashList } from "@shopify/flash-list";
 
 function NestableDraggableFlatListInner<T>(
-  props: DraggableFlatListProps<T>,
+  props: DraggableFlashListProps<T>,
   ref?: React.ForwardedRef<FlashList<T>>
 ) {
   const hasSuppressedWarnings = useRef(false);
@@ -60,21 +60,21 @@ function NestableDraggableFlatListInner<T>(
     containerRef.current.measureLayout(nodeHandle, onSuccess, onFail);
   });
 
-  const onDragBegin: DraggableFlatListProps<T>["onDragBegin"] = useStableCallback(
+  const onDragBegin: DraggableFlashListProps<T>["onDragBegin"] = useStableCallback(
     (params) => {
       setOuterScrollEnabled(false);
       props.onDragBegin?.(params);
     }
   );
 
-  const onDragEnd: DraggableFlatListProps<T>["onDragEnd"] = useStableCallback(
+  const onDragEnd: DraggableFlashListProps<T>["onDragEnd"] = useStableCallback(
     (params) => {
       setOuterScrollEnabled(true);
       props.onDragEnd?.(params);
     }
   );
 
-  const onAnimValInit: DraggableFlatListProps<T>["onAnimValInit"] = useStableCallback(
+  const onAnimValInit: DraggableFlashListProps<T>["onAnimValInit"] = useStableCallback(
     (params) => {
       setListHoverOffset(params.hoverOffset);
       setAnimVals({
@@ -105,5 +105,5 @@ function NestableDraggableFlatListInner<T>(
 export const NestableDraggableFlatList = React.forwardRef(
   NestableDraggableFlatListInner
 ) as <T>(
-  props: DraggableFlatListProps<T> & { ref?: React.ForwardedRef<FlashList<T>> }
+  props: DraggableFlashListProps<T> & { ref?: React.ForwardedRef<FlashList<T>> }
 ) => ReturnType<typeof NestableDraggableFlatListInner>;

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { DraggableFlatListProps } from "../types";
+import { DraggableFlashListProps } from "../types";
 
 const PropsContext = React.createContext<
-  DraggableFlatListProps<any> | undefined
+  DraggableFlashListProps<any> | undefined
 >(undefined);
 
-type Props<T> = DraggableFlatListProps<T> & { children: React.ReactNode };
+type Props<T> = DraggableFlashListProps<T> & { children: React.ReactNode };
 
 export default function PropsProvider<T>({ children, ...props }: Props<T>) {
   return (
@@ -15,7 +15,7 @@ export default function PropsProvider<T>({ children, ...props }: Props<T>) {
 
 export function useProps<T>() {
   const value = useContext(PropsContext) as
-    | DraggableFlatListProps<T>
+    | DraggableFlashListProps<T>
     | undefined;
   if (!value) {
     throw new Error("useProps must be called from within PropsProvider!");

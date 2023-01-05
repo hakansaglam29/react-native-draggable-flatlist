@@ -1,9 +1,9 @@
 import React from "react";
 import { FlashList } from "@shopify/flash-list";
 import Animated, { WithSpringConfig } from "react-native-reanimated";
-import { CellData, DraggableFlatListProps } from "../types";
+import { CellData, DraggableFlashListProps } from "../types";
 declare type RefContextValue<T> = {
-    propsRef: React.MutableRefObject<DraggableFlatListProps<T>>;
+    propsRef: React.MutableRefObject<DraggableFlashListProps<T>>;
     animationConfigRef: React.MutableRefObject<WithSpringConfig>;
     cellDataRef: React.MutableRefObject<Map<string, CellData>>;
     keyToIndexRef: React.MutableRefObject<Map<string, number>>;

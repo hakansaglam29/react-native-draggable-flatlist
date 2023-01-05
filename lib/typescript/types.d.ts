@@ -1,7 +1,7 @@
 import React from "react";
-import { FlatListProps, LayoutChangeEvent, StyleProp, ViewStyle } from "react-native";
+import { LayoutChangeEvent, StyleProp, ViewStyle } from "react-native";
 import { useAnimatedValues } from "./context/animatedValueContext";
-import { FlashList } from "@shopify/flash-list";
+import { FlashList, FlashListProps } from "@shopify/flash-list";
 import Animated, { AnimateProps, WithSpringConfig } from "react-native-reanimated";
 import { DEFAULT_PROPS } from "./constants";
 export declare type DragEndParams<T> = {
@@ -11,7 +11,7 @@ export declare type DragEndParams<T> = {
 };
 declare type Modify<T, R> = Omit<T, keyof R> & R;
 declare type DefaultProps = Readonly<typeof DEFAULT_PROPS>;
-export declare type DraggableFlatListProps<T> = Modify<FlatListProps<T>, {
+export declare type DraggableFlashListProps<T> = Modify<FlashListProps<T>, {
     data: T[];
     activationDistance?: number;
     animationConfig?: Partial<WithSpringConfig>;
@@ -51,7 +51,7 @@ export declare type RenderItemParams<T> = {
     isActive: boolean;
 };
 export declare type RenderItem<T> = (params: RenderItemParams<T>) => React.ReactNode;
-export declare type AnimatedFlatListType = <T>(props: Animated.AnimateProps<FlatListProps<T> & {
+export declare type AnimatedFlatListType = <T>(props: Animated.AnimateProps<FlashListProps<T> & {
     ref: React.Ref<FlashList<T>>;
     simultaneousHandlers?: React.Ref<any> | React.Ref<any>[];
 }>) => React.ReactElement;

@@ -1,9 +1,9 @@
 import React from "react";
 import Animated from "react-native-reanimated";
-import { DraggableFlatListProps } from "../types";
+import { DraggableFlashListProps } from "../types";
 import { FlashList } from "@shopify/flash-list";
-declare function NestableDraggableFlatListInner<T>(props: DraggableFlatListProps<T>, ref?: React.ForwardedRef<FlashList<T>>): JSX.Element;
-export declare const NestableDraggableFlatList: <T>(props: Omit<import("react-native").FlatListProps<T>, "keyExtractor" | "data" | "renderItem" | "debug" | "scrollEnabled" | "autoscrollThreshold" | "autoscrollSpeed" | "animationConfig" | "dragHitSlop" | "activationDistance" | "dragItemOverflow" | "containerStyle" | "onDragBegin" | "onDragEnd" | "onPlaceholderIndexChange" | "onRelease" | "onScrollOffsetChange" | "renderPlaceholder" | "simultaneousHandlers" | "outerScrollOffset" | "onAnimValInit" | "itemEnteringAnimation" | "itemExitingAnimation" | "itemLayoutAnimation" | "enableLayoutAnimationExperimental" | "onContainerLayout"> & {
+declare function NestableDraggableFlatListInner<T>(props: DraggableFlashListProps<T>, ref?: React.ForwardedRef<FlashList<T>>): JSX.Element;
+export declare const NestableDraggableFlatList: <T>(props: Omit<import("@shopify/flash-list").FlashListProps<T>, "keyExtractor" | "data" | "renderItem" | "scrollEnabled" | "autoscrollThreshold" | "autoscrollSpeed" | "animationConfig" | "dragHitSlop" | "activationDistance" | "dragItemOverflow" | "containerStyle" | "debug" | "onDragBegin" | "onDragEnd" | "onPlaceholderIndexChange" | "onRelease" | "onScrollOffsetChange" | "renderPlaceholder" | "simultaneousHandlers" | "outerScrollOffset" | "onAnimValInit" | "itemEnteringAnimation" | "itemExitingAnimation" | "itemLayoutAnimation" | "enableLayoutAnimationExperimental" | "onContainerLayout"> & {
     data: T[];
     activationDistance?: number | undefined;
     animationConfig?: Partial<import("react-native-reanimated").WithSpringConfig> | undefined;

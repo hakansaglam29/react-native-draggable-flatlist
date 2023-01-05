@@ -6,9 +6,9 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { ListRenderItem, FlatListProps, LayoutChangeEvent } from "react-native";
+import {  LayoutChangeEvent } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { FlashList } from "@shopify/flash-list";
+import { FlashList, ListRenderItem, FlashListProps, } from "@shopify/flash-list";
 import Animated, {
   runOnJS,
   useAnimatedReaction,
@@ -20,7 +20,7 @@ import CellRendererComponent from "./CellRendererComponent";
 import { DEFAULT_PROPS, isWeb } from "../constants";
 import PlaceholderItem from "./PlaceholderItem";
 import RowItem from "./RowItem";
-import { DraggableFlatListProps } from "../types";
+import { DraggableFlashListProps } from "../types";
 import PropsProvider from "../context/propsContext";
 import AnimatedValueProvider, {
   useAnimatedValues,
@@ -33,22 +33,22 @@ import ScrollOffsetListener from "./ScrollOffsetListener";
 import { typedMemo } from "../utils";
 
 type RNGHFlatListProps<T> = Animated.AnimateProps<
-  FlatListProps<T> & {
+  FlashListProps<T> & {
     ref: React.Ref<FlashList<T>>;
     simultaneousHandlers?: React.Ref<any> | React.Ref<any>[];
   }
 >;
 
 type OnViewableItemsChangedCallback<T> = Exclude<
-  FlatListProps<T>["onViewableItemsChanged"],
+  FlashListProps<T>["onViewableItemsChanged"],
   undefined | null
 >;
 
-const AnimatedFlatList = (Animated.createAnimatedComponent(
+const AnimatedFlashList = (Animated.createAnimatedComponent(
   FlashList
 ) as unknown) as <T>(props: RNGHFlatListProps<T>) => React.ReactElement;
 
-function DraggableFlatListInner<T>(props: DraggableFlatListProps<T>) {
+function DraggableFlatListInner<T>(props: DraggableFlashListProps<T>) {
   const {
     cellDataRef,
     containerRef,
@@ -353,7 +353,7 @@ function DraggableFlatListInner<T>(props: DraggableFlatListProps<T>) {
           {props.renderPlaceholder && (
             <PlaceholderItem renderPlaceholder={props.renderPlaceholder} />
           )}
-          <AnimatedFlatList
+          <AnimatedFlashList
             {...props}
             data={props.data}
             onViewableItemsChanged={onViewableItemsChanged}
@@ -382,7 +382,7 @@ function DraggableFlatListInner<T>(props: DraggableFlatListProps<T>) {
 }
 
 function DraggableFlatList<T>(
-  props: DraggableFlatListProps<T>,
+  props: DraggableFlashListProps<T>,
   ref?: React.ForwardedRef<FlashList<T>> | null
 ) {
   return (
@@ -401,5 +401,5 @@ const MemoizedInner = typedMemo(DraggableFlatListInner);
 // Generic forwarded ref type assertion taken from:
 // https://fettblog.eu/typescript-react-generic-forward-refs/#option-1%3A-type-assertion
 export default React.forwardRef(DraggableFlatList) as <T>(
-  props: DraggableFlatListProps<T> & { ref?: React.ForwardedRef<FlashList<T>> }
+  props: DraggableFlashListProps<T> & { ref?: React.ForwardedRef<FlashList<T>> }
 ) => ReturnType<typeof DraggableFlatList>;
