@@ -6,7 +6,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { useAnimatedValues } from "./context/animatedValueContext";
-import { FlatList } from "react-native-gesture-handler";
+import { FlashList } from "@shopify/flash-list";
 import Animated, {
   AnimateProps,
   WithSpringConfig,
@@ -72,7 +72,7 @@ export type RenderItem<T> = (params: RenderItemParams<T>) => React.ReactNode;
 export type AnimatedFlatListType = <T>(
   props: Animated.AnimateProps<
     FlatListProps<T> & {
-      ref: React.Ref<FlatList<T>>;
+      ref: React.Ref<FlashList<T>>;
       simultaneousHandlers?: React.Ref<any> | React.Ref<any>[];
     }
   >

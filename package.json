@@ -48,6 +48,7 @@
   },
   "homepage": "https://github.com/computerjazz/react-native-draggable-flatlist#readme",
   "peerDependencies": {
+    "@shopify/flash-list": ">=1.4.0",
     "react-native": ">=0.64.0",
     "react-native-gesture-handler": ">=2.0.0",
     "react-native-reanimated": ">=2.8.0"

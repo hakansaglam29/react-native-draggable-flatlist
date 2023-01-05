@@ -10,11 +10,11 @@ import { useSafeNestableScrollContainerContext } from "../context/nestableScroll
 import { useNestedAutoScroll } from "../hooks/useNestedAutoScroll";
 import { typedMemo } from "../utils";
 import { useStableCallback } from "../hooks/useStableCallback";
-import { FlatList } from "react-native-gesture-handler";
+import { FlashList } from "@shopify/flash-list";
 
 function NestableDraggableFlatListInner<T>(
   props: DraggableFlatListProps<T>,
-  ref?: React.ForwardedRef<FlatList<T>>
+  ref?: React.ForwardedRef<FlashList<T>>
 ) {
   const hasSuppressedWarnings = useRef(false);
 
@@ -105,5 +105,5 @@ function NestableDraggableFlatListInner<T>(
 export const NestableDraggableFlatList = React.forwardRef(
   NestableDraggableFlatListInner
 ) as <T>(
-  props: DraggableFlatListProps<T> & { ref?: React.ForwardedRef<FlatList<T>> }
+  props: DraggableFlatListProps<T> & { ref?: React.ForwardedRef<FlashList<T>> }
 ) => ReturnType<typeof NestableDraggableFlatListInner>;
