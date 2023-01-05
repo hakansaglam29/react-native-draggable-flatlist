@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import {  LayoutChangeEvent } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { FlashList, ListRenderItem, FlashListProps, } from "@shopify/flash-list";
+import { FlashList, ListRenderItem, FlashListProps } from "@shopify/flash-list";
 import Animated, {
   runOnJS,
   useAnimatedReaction,
